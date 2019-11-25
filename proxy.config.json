@@ -1,0 +1,9 @@
+
+{
+  "/Products": {
+      "target": "https://services.odata.org/V3/(S(y5cgwl2bebbjidizukbuuoek))/OData/OData.svc",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+  }
+}
