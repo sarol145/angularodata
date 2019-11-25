@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './services/http.service';
+import { ODataService } from './services/odata.service';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,14 @@ export class AppComponent implements OnInit {
   title = 'Odata-Demo';
   tableData = [];
   searchText = '';
-  constructor(private http: HttpService) {}
+  constructor(private http: HttpService, private odata: ODataService) {}
 
   ngOnInit() {
   }
 
   onFetchData() {
-    this.http.getData('Products', this.searchText).subscribe((data: any) => {
+    const query = this.odata.toODataQuery(this.searchText);
+    this.http.getData('Products', query).subscribe((data: any) => {
       this.tableData = data.value || [];
     });
   }
